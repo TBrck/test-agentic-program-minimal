@@ -1,6 +1,6 @@
 # Minimalistic Agentic Program for Data Analysis
 
-This repository contains a demonstration of how to build an agentic AI system that can autonomously decide what actions to take based on user input. It's inspired by the conversational-ads backend orchestrator pattern and designed for data analysts working with advertising/marketing data.
+This repository contains a demonstration of how to build an agentic AI system that can autonomously decide what actions to take based on user input. This example is designed for data analysts working with advertising/marketing data. However, the concept of agentic AI system can be applied to many data-driven domains.
 
 ## Overview
 
@@ -70,7 +70,7 @@ Both versions now use **actual Azure OpenAI LLM** with the same credentials as y
 llm_client = AzureChatOpenAI(
     azure_deployment="gpt-4o-mini",
     api_version="2024-10-21",
-    azure_endpoint="https://cail-ad-chatbot-instance-azure-openai.openai.azure.com/",
+    azure_endpoint="your-endpoint-url",
     openai_api_key="your-key"
 )
 
@@ -80,7 +80,7 @@ llm_with_tools = llm_client.bind_tools(tools=all_tools, tool_choice="auto")
 
 When you run the program, you'll see actual HTTP requests to Azure OpenAI:
 ```
-INFO:httpx:HTTP Request: POST https://cail-ad-chatbot-instance-azure-openai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-10-21 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST your-endpoint-url/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-10-21 "HTTP/1.1 200 OK"
 ```
 
 The LLM **autonomously decides** which tool to call based on:
@@ -246,7 +246,3 @@ llm_with_tools = client.bind_tools(
 6. **Build Your Domain**: Adapt for your specific use case
 
 This template provides a solid foundation for building agentic systems that can autonomously decide what actions to take based on user input, making it valuable for data analysts, researchers, and developers working on AI-powered applications.
-
-## Inspiration
-
-This implementation is inspired by the LLM orchestrator pattern used in the conversational-ads backend, demonstrating how production agentic systems route user queries to appropriate tools while maintaining context and providing intelligent responses.
